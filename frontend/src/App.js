@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/header';
+import Footer from './components/footer';
+import Sidebar from './components/sidebar';
 import Login from './pages/login';
 import Register from './pages/register';
 import NewPost from './pages/newPost';
@@ -13,12 +14,16 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-        <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/newpost" component={NewPost} />
-          <Route path="/" component={Posts} />
-        </Switch>
+        <div className="main-content">
+          <Sidebar /> {/* Render Sidebar component */}
+          <Routes>
+            {}
+            {/* <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/newpost" element={<NewPost />} />
+            <Route path="/" element={<Posts />} /> */}
+          </Routes>
+        </div>
         <Footer />
       </div>
     </Router>
