@@ -8,7 +8,7 @@ def create_app():
     app = Flask(__name__)
     
     #establish MongoDB connection
-    uri = "mongodb+srv://postgres:waffles@twinstagram.id1cxoz.mongodb.net/?retryWrites=true&w=majority&appName=Twinstagram"
+    uri = "mongodb+srv://postgres:waffles@twinstagram.id1cxoz.mongodb.net/"
     client = MongoClient(uri)
 
     app.config['MONGO_CLIENT'] = client
@@ -19,8 +19,13 @@ def create_app():
     def index():
         return "This is the index"
     
-
     
+    @app.route('/debug')
+    def debug():
+        db = client.twinstagram
+        accounts = list(db.accounts.find())
+        print(accounts)
+        return "debug route"
 
     
     # Register blueprints 

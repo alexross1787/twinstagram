@@ -8,7 +8,7 @@
 <body>
     <div class="feed">
         <div class="logo">
-            <img src="{{ url_for('static', filename='logo_dark.png') }}" alt="logo">
+            <img src="{{ url_for('static', filename='logo_light.png') }}" alt="logo">
         </div>
         <nav>
             <ul> <!-- These will be icon links -->
@@ -16,14 +16,15 @@
                 <li>Notifications</li>
                 <li>Create</li>
                 <li>Profile</li>
+                <button>Create</button>
             </ul>
         </nav>
         <div class="posts">
-            {% for post in posts %}
+            {% for account in accounts %}
             <div class="post">
-                <img src="{{ post.image_url }}" alt="Post Image">
-                <p>{{ post.content }}</p>
-                <span class="likes">{{ post.likes }} likes</span>
+                <img src="{{ account.avatar }}" alt="Post Image">
+                <p>{{ account.bio }}</p>
+                <span class="likes">{{ account.likes }} likes</span>
             </div>
             {% endfor %}
         </div>

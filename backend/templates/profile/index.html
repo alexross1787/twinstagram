@@ -6,30 +6,26 @@
     <title>Document</title>
 </head>
 <body>
-    {{profile.name}}
-    {% for profile in profiles %}
+    <h1>hey</h1>
+    
     <header>
-        <img src="{{ profile.avatar }}" alt="avatar">
-        <div class="profile-info">
-            <h1>{{ profile.username }}</h1>
-            <p>{{ profile.name }}</p>
-            <p>{{ profile.num_of_posts }} posts</p>
-            <p>{{ profile.followers}} followers</p>
-            <p>{{ profile.following }} following</p>
+        <img src="{{ account.avatar }}" alt="avatar">
+        <div class="accounts-info">
+            <h1>{{ account.username }}</h1>
+            <p>{{ account.name }}</p>
+            <p>{{ account.num_of_posts }} posts</p>
+            <p>{{ account.followers}} followers</p>
+            <p>{{ account.following }} following</p>
             <div class="bio">
-                <p>bio stuff</p>
+                <p>{{ account.bio }}</p>
             </div>
         </div>
     </header>
     <div class="photo-grid">
         <h3>Posts</h3>
-        {% for post in profile.posts %}
-        <img src="{{ post.img}}" alt="post">
-        <img src="{{ post.img}}" alt="post">
+        {% for post in accounts.posts %}
         <img src="{{ post.img}}" alt="post">
         {% endfor %}
     </div>
-    {% endfor %}
 </body>
 </html>
-
