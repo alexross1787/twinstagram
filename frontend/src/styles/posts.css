@@ -1,19 +1,76 @@
+.post {
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #fff;
+}
 
-.posts {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
-  }
-  
-  .post {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-  }
-  
-  .post img {
-    width: 100%;
-    height: auto;
-  }
-  
+.post-header {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.post-images {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.post-image {
+  max-width: 100%;
+  margin-right: 5px;
+}
+
+.post-description {
+  margin-top: 10px;
+}
+
+.post-details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.post-comments {
+  margin-top: 10px;
+}
+
+.comment {
+  margin-bottom: 5px;
+}
+
+.commenter {
+  font-weight: bold;
+}
+
+.like {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.like img {
+  width: 20px; /* Adjust size as needed */
+}
+
+.like.liked img {
+  filter: grayscale(0%);
+}
+
+.posts-page {
+  padding: 20px;
+}

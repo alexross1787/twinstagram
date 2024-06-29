@@ -2,12 +2,14 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/header';
 import Footer from './components/footer';
-import Sidebar from './components/sidebar';
 import Login from './pages/login';
-import Register from './pages/register';
 import NewPost from './pages/newPost';
-import Posts from './pages/posts';
-import './App.css';
+import Feed from './components/feed';
+import Profile from './pages/profile';
+import Messages from './pages/messages';
+import More from './pages/more';
+import NewPostModal from './components/newPostModal';
+import './styles/app.css';
 
 function App() {
   return (
@@ -15,19 +17,22 @@ function App() {
       <div className="App">
         <Header />
         <div className="main-content">
-          <Sidebar /> {/* Render Sidebar component */}
           <Routes>
-            {}
-            {/* <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/newpost" element={<NewPost />} />
-            <Route path="/" element={<Posts />} /> */}
+            <Route path="/" element={<Feed />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/messages" element={<Messages />} />
+            <Route path="/more" element={<More />} />
           </Routes>
         </div>
         <Footer />
+        {/* Only render the modal when needed */}
+        {/* {isModalOpen && <NewPostModal onClose={closeModal} />} */}
       </div>
     </Router>
   );
 }
 
 export default App;
+

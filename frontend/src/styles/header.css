@@ -1,27 +1,27 @@
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .nav-links {
-    display: flex;
-  }
-  
-  .nav-links > * {
-    margin-right: 1rem;
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .nav-links > *:hover {
-    color: #555;
-  }
+/* src/styles/header.css */
+.app-header {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.app-header nav ul li {
+  display: inline;
+}
+
+.app-header nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}

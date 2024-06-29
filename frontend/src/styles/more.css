@@ -1,0 +1,14 @@
+/* src/styles/more.css */
+.more-page {
+    padding: 20px;
+  }
+  
+  .more-page h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .more-page p {
+    font-size: 16px;
+  }
+  

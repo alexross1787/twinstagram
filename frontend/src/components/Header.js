@@ -1,22 +1,18 @@
-// Header.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/header.css'; // Adjust the path based on your project structure
+import Navigation from './navigation'; // Adjust path as per your project structure
+import '../styles/header.css';
 
 const Header = () => {
   return (
-    <header className="header">
+    <header className="app-header">
       <div className="logo">
-        <Link to="/">Twinstagram</Link>
+        {/* Your logo component or image */}
+        <img src="frontend\src\assets\logo_dark.png" alt="Logo" />
       </div>
-      <nav className="nav-links">
-        <Link to="/">Home</Link>
-        <Link to="/explore">Explore</Link>
-        <Link to="/notifications">Notifications</Link>
-        <Link to="/profile">Profile</Link>
-      </nav>
+      <Navigation />
     </header>
   );
-};
+}
 
 export default Header;

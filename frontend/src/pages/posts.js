@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import Post from '../components/posts'; // Import the Post component
+import '../styles/posts.css'; // Import the styles for posts
 
-const Posts = () => {
+const PostsPage = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -48,21 +50,16 @@ const Posts = () => {
   };
 
   return (
-    <div>
+    <div className="posts-page">
       {posts.length === 0 ? (
         <p>No posts found.</p>
       ) : (
         posts.map((post) => (
-          <div key={post.id}>
-            <img src={post.imageUrl} alt={post.caption} />
-            <p>{post.caption}</p>
-            <p>Likes: {post.likes}</p>
-            <button onClick={() => handleLike(post.id)}>Like</button>
-          </div>
+          <Post key={post.id} post={post} handleLike={handleLike} />
         ))
       )}
     </div>
   );
 };
 
-export default Posts;
+export default PostsPage;
