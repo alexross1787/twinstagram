@@ -34,5 +34,8 @@ def create_app():
 
     from . import feed
     app.register_blueprint(feed.bp)
+
+    from . import create 
+    app.register_blueprint(create.bp)
     
     return app

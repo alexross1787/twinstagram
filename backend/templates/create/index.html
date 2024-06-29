@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Create Post</title>
 </head>
 <body>
     <h1>Create Form</h1>
-    <form action="{{ url_for('create_post') }}" method="POST">
-        <label for="'image_url">Image Url</label>
+    <form action="{{ url_for('create.create_post')}}" method="post">
+        <label for="post-image"> Image URL:
+            <input type="text">
+        </label>
         <br>
-        <input type="text" required>
         <br>
-        <br>
-        <label for="captio">Caption:</label>
-        <textarea name="caption" id="caption" rows="5" cols="50"> </textarea>
+        <label for="post-caption">Post Caption:
+            <textarea name="post-caption" id="post-caption" rows="4" cols="50"></textarea>
+        </label>
 
-        <input type="submit" value="Create Post">
+        <input type="submit" value="Share">
     </form>
 </body>
 </html>
