@@ -4,6 +4,7 @@ from pymongo import MongoClient
 
 def create_app():
     app = Flask(__name__)
+    app.config['SECRET_KEY'] = 'waffles'
    
     #establish MongoDB connection
     uri = "mongodb+srv://postgres:waffles@twinstagram.id1cxoz.mongodb.net/"

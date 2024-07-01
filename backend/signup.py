@@ -13,12 +13,26 @@ def signup():
     username = request.form.get('username')
     password = request.form.get('password')
 
-    print(username,password)
-
     hashed_password = generate_password_hash(password)
+
+    try:
+      client = current_app.config['MONGO_CLIENT']
+      db = client.twinstagram
+      
+      db.accounts.insert_one({
+        "username": username,
+        "password": hashed_password
+      })
+
+      flash ('Welcome to Twinstagram')
+      return redirect('/login')
     
+    except DuplicateKeyError:
+            flash('Username already exists. Please choose a different one.', 'error')
+            return render_template('signup/index.html')
+        
+    except Exception as e:
+            flash(f'An error occurred: {e}', 'error')
+            render_template('signup/index.html')
 
-    return render_template('signup/index.html')
-  else:
-
-    return render_template('signup/index.html')
+  return render_template('signup/index.html')
