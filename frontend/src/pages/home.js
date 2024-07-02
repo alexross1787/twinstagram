@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Header from '../components/header';
-import Footer from '../components/footer';
+import Header from './components/header';
+import Footer from './components/footer';
 import Feed from '../components/feed'; // Adjust the import path based on your folder structure
 import NewPostModal from '../components/newPostModal';
 import ProfileInfo from '../components/profileInfo';

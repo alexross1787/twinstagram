@@ -3,26 +3,20 @@ from flask import Blueprint, render_template, current_app, request, url_for, red
 bp = Blueprint('create', __name__, url_prefix='/create')
 
 
-@bp.route('/create', methods=['GET', 'POST'])
-def create_post():
-    if request.method == 'POST':
-        post_image = request.form['post_image']
-        post_caption = request.form['post_caption']
-        
-        client = current_app.config['MONGO_CLIENT']
-        db = client.get_database('Twinstagram')
-        posts_collection = db.posts
-
-        new_post = {
-            'image': post_image,
-            'caption': post_caption,
-            'username': 'username'
-        }
-        posts_collection.insert_one(new_post)
-
-        return redirect('/feed')
+@bp.route('/')
+def create():
+  
     
-    return render_template('create.html')
+    return render_template('create/index.html')
 
 
+# @bp.route('/create_post', methods=['POST'])
+# def create_post():
+#     image_url = request.form.get('post-image')
+#     post_caption = request.form.get('post-caption')
+
+#     # save to database
+#     client = current_app.config['MONGO_CLIENT']
+#     db = client.twinstagram
+#     db.posts.insert_one()
 

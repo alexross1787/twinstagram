@@ -2,11 +2,10 @@ from flask import Flask, jsonify
 from pymongo import MongoClient
 
 
-
-
 def create_app():
     app = Flask(__name__)
-    
+    app.config['SECRET_KEY'] = 'waffles'
+   
     #establish MongoDB connection
     uri = "mongodb+srv://postgres:waffles@twinstagram.id1cxoz.mongodb.net/"
     client = MongoClient(uri)
@@ -37,5 +36,11 @@ def create_app():
 
     from . import create 
     app.register_blueprint(create.bp)
+
+    from . import signup
+    app.register_blueprint(signup.bp)
+
+    from . import login
+    app.register_blueprint(login.bp)
     
     return app
