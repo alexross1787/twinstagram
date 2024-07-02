@@ -1,7 +1,7 @@
 // Footer.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/footer.css'; // Adjust the path based on your project structure
+import '../styles/footer.css';
 
 const Footer = () => {
   return (

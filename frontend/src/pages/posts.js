@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Post from '../components/posts'; // Import the Post component
-import '../styles/posts.css'; // Import the styles for posts
+import Post from './components/posts';
+import '../styles/posts.css';
 
 const PostsPage = () => {
   const [posts, setPosts] = useState([]);

@@ -1,25 +1,52 @@
-.messages-container {
-    padding: 20px;
-  }
-  
-  .message-list {
-    border: 1px solid #ccc;
+/* Chat window styles */
+.card-header {
+  background-color: #fafafa;
+  border-bottom: 1px solid #dbdbdb;
+  padding: 10px 15px;
+}
+
+.card-body {
+  height: calc(80vh - 120px); 
+  overflow-y: auto;
+  padding: 0;
+}
+
+.card-footer {
+  border-top: 1px solid #dbdbdb;
+  padding: 10px 15px;
+}
+
+.form-control {
+  border: none;
+  border-radius: 20px;
+  padding: 10px 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Message bubble styles */
+.message {
+  max-width: 70%;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.message-sender {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.message-content {
+  color: #333;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+  .messages-container {
     padding: 10px;
   }
   
-  .message {
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #f0f0f0;
+  .card-body {
+    height: calc(80vh - 200px); /* Adjust this value for smaller screens */
   }
-  
-  .message-sender {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .message-content {
-    color: #333;
-  }
-  
+}

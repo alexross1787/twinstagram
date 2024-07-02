@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/login.css'; // Import your CSS file
 import logoDark from '../assets/logo_dark.png';
 import logoLight from '../assets/logo_light.png';
@@ -36,11 +37,10 @@ const Login = () => {
   // Function to toggle theme
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
-    document.body.classList.toggle('dark-theme'); // Toggle class on body
   };
 
   return (
-    <div className="login-container">
+    <div className={`login-container ${theme}`}>
       <form className="login-form" onSubmit={handleLogin}>
         <div className="logo">
           <img src={theme === 'dark' ? logoDark : logoLight} alt="Logo" />
@@ -62,6 +62,9 @@ const Login = () => {
         <button type="submit">Login</button>
       </form>
       {error && <div className="error-message">{error}</div>}
+      <div className="signup-link">
+        Don't have an account? <Link to="/signup">Sign up</Link>
+      </div>
       <button onClick={toggleTheme}>Toggle Theme</button>
     </div>
   );
