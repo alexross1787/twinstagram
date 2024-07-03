@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import '../styles/login.css'; // Import your CSS file
 import logoDark from '../assets/logo_dark.png';
 import logoLight from '../assets/logo_light.png';
 
 const Login = () => {
-  const [user, setUser] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [theme, setTheme] = useState('light'); // Initial theme state (by default)
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
     try {
-      const response = await fetch('http://backend-url/login', {
+      const response = await fetch('http://127.0.0.1:5000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ user, password })
+        body: JSON.stringify({ username, password })
       });
+
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('token', data.token);
@@ -36,19 +37,21 @@ const Login = () => {
 
   // Function to toggle theme
   const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    document.body.classList.toggle('dark-theme', newTheme === 'dark'); // Toggle class on body
   };
 
   return (
-    <div className={`login-container ${theme}`}>
+    <div className="login-container">
       <form className="login-form" onSubmit={handleLogin}>
         <div className="logo">
           <img src={theme === 'dark' ? logoDark : logoLight} alt="Logo" />
         </div>
         <input
           type="text"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           placeholder="Username"
           required
         />
@@ -62,9 +65,6 @@ const Login = () => {
         <button type="submit">Login</button>
       </form>
       {error && <div className="error-message">{error}</div>}
-      <div className="signup-link">
-        Don't have an account? <Link to="/signup">Sign up</Link>
-      </div>
       <button onClick={toggleTheme}>Toggle Theme</button>
     </div>
   );

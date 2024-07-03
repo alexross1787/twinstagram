@@ -4,7 +4,7 @@ import logoDark from '../assets/logo_dark.png';
 import logoLight from '../assets/logo_light.png';
 
 const Login = () => {
-  const [user, setUser] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [theme, setTheme] = useState('light'); // Initial theme state (by default)
@@ -12,16 +12,16 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/', {
+      const response = await fetch('http://127.0.0.1:5000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ user, password })
+        body: JSON.stringify({ username, password })
       });
       if (response.ok) {
         const data = await response.json();
-        localStorage.setItem('token', data.token);
+        localStorage.setItem('username', data.username);
         window.location.href = '/home';
       } else {
         const errorData = await response.json();
@@ -47,8 +47,8 @@ const Login = () => {
         </div>
         <input
           type="text"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           placeholder="Username"
           required
         />

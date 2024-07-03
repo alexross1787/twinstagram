@@ -4,6 +4,6 @@ bp = Blueprint('logout', __name__, url_prefix='/logout')
 
 @bp.route('/')
 def logout():
-    session.abandon
+    session.clear
     
     return redirect('/login')
