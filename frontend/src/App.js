@@ -1,15 +1,24 @@
+// App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Login from './pages/login';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHeart, faComment, faShare } from '@fortawesome/free-solid-svg-icons';
+import Header from './components/header';
+import Footer from './components/footer';
+import Login from './components/login';
+import SignUp from './components/signUp';
 import NewPost from './pages/newPost';
 import Feed from './components/feed';
 import Profile from './pages/profile';
 import Messages from './pages/messages';
-import More from './pages/more';
-import NewPostModal from './components/newPostModal';
+import Settings from './pages/settings';
 import './styles/app.css';
+import './icons';
+
+// Add the icons to the Font Awesome library
+library.add(faHeart, faComment, faShare);
 
 function App() {
   return (
@@ -18,17 +27,17 @@ function App() {
         <Header />
         <div className="main-content">
           <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/newpost" element={<NewPost />} />
             <Route path="/" element={<Feed />} />
+            <Route path="/home" element={<Feed />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/newpost" element={<NewPost />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/messages" element={<Messages />} />
-            <Route path="/more" element={<More />} />
+            <Route path="/settings" element={<Settings />} />
           </Routes>
         </div>
         <Footer />
-        {/* Only render the modal when needed */}
-        {/* {isModalOpen && <NewPostModal onClose={closeModal} />} */}
       </div>
     </Router>
   );

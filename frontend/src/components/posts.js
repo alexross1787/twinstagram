@@ -1,12 +1,9 @@
-// src/components/posts.js
-
 import React from "react";
-import posts from "../mockData"; // Import the mock data
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "../styles/posts.css"; // Import the CSS file
 
-const Posts = () => {
+const Posts = ({ posts }) => {
   return (
     <div className="container">
       {posts.length !== 0 ? (
