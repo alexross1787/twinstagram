@@ -5,7 +5,7 @@ import logoDark from '../assets/logo_dark.png';
 import logoLight from '../assets/logo_light.png';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [theme, setTheme] = useState('light'); // Initial theme state (by default)
@@ -18,7 +18,7 @@ const Login = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ user, password })
       });
       if (response.ok) {
         const data = await response.json();
@@ -46,10 +46,10 @@ const Login = () => {
           <img src={theme === 'dark' ? logoDark : logoLight} alt="Logo" />
         </div>
         <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
+          type="text"
+          value={user}
+          onChange={(e) => setUser(e.target.value)}
+          placeholder="Username"
           required
         />
         <input
