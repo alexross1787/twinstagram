@@ -7,7 +7,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [theme, setTheme] = useState('light'); // Initial theme state (by default)
+  const [theme, setTheme] = useState('light'); 
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -33,7 +33,7 @@ const Login = () => {
     }
   };
 
-  // Function to toggle theme
+  
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
     document.body.classList.toggle('dark-theme');

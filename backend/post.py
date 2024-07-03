@@ -36,17 +36,17 @@ def create():
 
     return render_template('post/index.html')
 
-# @bp.route('/delete/<post_id>', methods=['POST'])
-# def delete(post_id):
-#     user_id = session.get('user_id')
+@bp.route('/post/<post_id>/delete', methods=['POST'])
+def delete(post_id):
+    user_id = session.get('user_id')
 
-#     if user_id:
-#         client = current_app.config['MONGO_CLIENT']
-#         db = client.twinstagram
+    if user_id:
+        client = current_app.config['MONGO_CLIENT']
+        db = client.twinstagram
 
-#         post = db.posts.find_one({'_id': ObjectId(post_id), 'username': session['username']})
+        post = db.posts.find_one({'_id': ObjectId(post_id), 'username': session['username']})
 
-#         if post: 
-#             db.posts.delete_one({'_id': ObjectId(post_id)})
+        if post: 
+            db.posts.delete_one({'_id': ObjectId(post_id)})
 
-#     return redirect('/feed')
+    return redirect('/feed')

@@ -1,51 +1,70 @@
-from flask import Flask, jsonify, redirect
+from flask import Flask, redirect
 from pymongo import MongoClient
-
+from flask_cors import CORS
+import os
+from dotenv import load_dotenv
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'waffles'
-   
-    #establish MongoDB connection
-    uri = "mongodb+srv://postgres:waffles@twinstagram.id1cxoz.mongodb.net/"
-    client = MongoClient(uri)
 
-    app.config['MONGO_CLIENT'] = client
+    # Load environment variables
+    load_dotenv()
 
-    
+    # Configuration
+    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+    uri = os.getenv('MONGO_URI')
 
-    @app.route('/')
-    def index():
-        return redirect('/feed')
-    
-    
-    @app.route('/debug')
-    def debug():
-        db = client.twinstagram
-        accounts = list(db.accounts.find())
-        print(accounts)
-        return "debug route"
+    try:
+        # Establish MongoDB connection
+        client = MongoClient(uri)
+        app.config['MONGO_CLIENT'] = client
 
-    
-    # Register blueprints 
-    from . import profile
-    app.register_blueprint(profile.bp)
+        # Initialize the database object
+        app.config['twinstagram'] = os.getenv('twinstagram')
+        db = client[app.config['twinstagram']]
+        app.config['MONGO_DB'] = db
 
-    from . import feed
-    app.register_blueprint(feed.bp)
+        # CORS setup
+        CORS(app, origins="http://localhost:5000",
+             allow_headers=["Content-Type", "Authorization", "Access-Control-Allow-Credentials"],
+             supports_credentials=True)
 
-    from . import post 
-    app.register_blueprint(post.bp)
+        # Routes
+        @app.route('/')
+        def index():
+            return redirect('/feed')
 
-    from . import signup
-    app.register_blueprint(signup.bp)
+        @app.route('/debug')
+        def debug():
+            try:
+                db = app.config['MONGO_DB']
+                accounts = list(db.accounts.find())
+                print(accounts)
+                return "Debug route"
+            except Exception as e:
+                return f"Error in debug route: {e}"
 
-    from . import login
-    app.register_blueprint(login.bp)
+        # Register blueprints
+        from .profile import bp as profile_bp
+        app.register_blueprint(profile_bp)
 
-    from . import logout
-    app.register_blueprint(logout.bp)
+        from .feed import bp as feed_bp
+        app.register_blueprint(feed_bp)
 
-    
-    
+        from .post import bp as post_bp
+        app.register_blueprint(post_bp)
+
+        from .signup import bp as signup_bp
+        app.register_blueprint(signup_bp)
+
+        from .login import bp as login_bp
+        app.register_blueprint(login_bp)
+
+        from .logout import bp as logout_bp
+        app.register_blueprint(logout_bp)
+
+    except Exception as e:
+        print(f"Failed to connect to MongoDB: {e}")
+        # Handle connection failure gracefully (e.g., log error, raise exception)
+
     return app
