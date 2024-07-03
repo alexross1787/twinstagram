@@ -1,27 +1,60 @@
-/* src/styles/header.css */
 .app-header {
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
+  background-color: #ffffff;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 2px 5px rgba(156, 152, 152, 0.281);
+  border-bottom: 1px solid #fffbfb;
 }
 
-.app-header nav ul {
-  list-style: none;
+.logo img {
+  width: 180px;
+}
+
+.search-bar {
+  width: 300px; 
+}
+
+.input-group {
+  width: 100%;
+}
+
+.input-group-text {
+  background-color: #fff;
+  border: none;
+}
+
+.form-control {
+  border-left: none;
+}
+
+.navigation ul {
+  list-style-type: none;
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 20px;
 }
 
-.app-header nav ul li {
-  display: inline;
+.navigation li {
+  margin-right: 20px;
 }
 
-.app-header nav ul li a {
+.navigation a {
   text-decoration: none;
-  color: #333;
+  color: #000000;
+  font-weight: bold;
+}
+
+.navigation a:hover {
+  text-decoration: underline;
+  color: #f8f6f6;
+}
+
+.navigation .nav-link {
+  color: #0a0a0a;
+}
+
+.navigation .active {
   font-weight: bold;
 }

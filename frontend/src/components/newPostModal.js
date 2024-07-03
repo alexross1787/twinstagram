@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
-import Modal from '../components/modal'; // Ensure Modal component is correctly imported
-import '../styles/newPostModal.css'; // Import your modal CSS file
+import Modal from '../components/modal'; 
+import '../styles/newPostModal.css';
 
 const NewPostModal = ({ onClose }) => {
   const [caption, setCaption] = useState('');
-  const [image, setImage] = useState(null); // State for image file
+  const [image, setImage] = useState(null); 
 
   const handleImageChange = (e) => {
-    // Handle image upload
+
     const file = e.target.files[0];
     setImage(file);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission (upload image and caption)
-    // Example: You can use FormData to send the image file and caption to your backend
     onClose(); 
   };
 

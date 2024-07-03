@@ -1,22 +1,55 @@
 import React from 'react';
-import '../styles/messages.css'; // Import your CSS file
+import { Container, Row, Col, Card, Button } from 'react-bootstrap'; 
 
 const Messages = () => {
+  const messages = []; // Replace with your actual messages array
+
   return (
-    <div className="messages-container">
-      <h2>Messages</h2>
-      <div className="message-list">
-        <div className="message">
-          <div className="message-sender">Sender Name</div>
-          <div className="message-content">Message content goes here.</div>
-        </div>
-        <div className="message">
-          <div className="message-sender">Another Sender</div>
-          <div className="message-content">Another message here.</div>
-        </div>
-        {/* Add more messages as needed */}
-      </div>
-    </div>
+    <Container className="mt-4">
+      <Row>
+        <Col md={4}>
+          <Card>
+            <Card.Header>Recent Conversations</Card.Header>
+            <Card.Body>
+              {messages.length === 0 ? (
+                <ul className="list-group list-group-flush">
+                  <li className="list-group-item">No Messages</li>
+                </ul>
+              ) : (
+                <ul className="list-group list-group-flush">
+                  {/* Replace with logic to display actual recent conversations */}
+                  <li className="list-group-item">Conversation 1</li>
+                  <li className="list-group-item">Conversation 2</li>
+                  <li className="list-group-item">Conversation 3</li>
+                </ul>
+              )}
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col md={8}>
+          <Card>
+            <Card.Header>Message</Card.Header>
+            <Card.Body className="message-body">
+              {messages.length === 0 ? (
+                <div className="text-center py-5">
+                  <p>Start Messaging</p>
+                </div>
+              ) : (
+                <ul className="list-group list-group-flush">
+                  <li className="list-group-item">Message 1</li>
+                  <li className="list-group-item">Message 2</li>
+                  <li className="list-group-item">Message 3</li>
+                </ul>
+              )}
+            </Card.Body>
+            <Card.Footer>
+              <input type="text" className="form-control mb-2" placeholder="Type a message..." />
+              <Button variant="primary">Send</Button>
+            </Card.Footer>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

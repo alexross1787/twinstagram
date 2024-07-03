@@ -1,76 +1,109 @@
-.post {
-  border: 1px solid #ddd;
-  margin-bottom: 20px;
-  padding: 10px;
-  border-radius: 8px;
-  background-color: #fff;
+/* src/styles/posts.css */
+
+/* Container for the posts */
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding-top: 20px;
 }
 
-.post-header {
+/* Post card */
+.card {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Post header */
+.card-header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.card-header .d-flex {
   align-items: center;
 }
 
-.avatar {
-  width: 40px;
-  height: 40px;
+.card-header img {
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
+  object-fit: cover;
+}
+
+.card-header .ml-3 {
+  margin-left: 10px;
+}
+
+.card-header .bi-three-dots {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Post image */
+.card-img-top {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Post body */
+.card-body {
+  padding: 10px 15px;
+}
+
+.card-body .d-flex {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-body .bi {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.card-body .bi-heart {
   margin-right: 10px;
 }
 
-.username {
-  font-weight: bold;
+.card-body .bi-heart.text-danger {
+  color: tomato;
 }
 
-.post-images {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 10px;
+.card-body .bi-chat {
+  margin-left: 10px;
 }
 
-.post-image {
-  max-width: 100%;
-  margin-right: 5px;
+.card-body .bi-send {
+  margin-left: 10px;
 }
 
-.post-description {
-  margin-top: 10px;
+.card-body .bi-bookmark {
+  font-size: 1.5rem;
 }
 
-.post-details {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-
-.post-comments {
-  margin-top: 10px;
-}
-
-.comment {
+/* Post likes */
+.card-body p {
   margin-bottom: 5px;
 }
 
-.commenter {
+/* Post comments */
+.card-body .text-muted {
+  font-size: 0.9rem;
+}
+
+/* Comment section */
+.card-body p span {
   font-weight: bold;
-}
-
-.like {
-  background-color: transparent;
-  border: none;
   cursor: pointer;
-  padding: 0;
-  margin-top: 10px;
 }
 
-.like img {
-  width: 20px; /* Adjust size as needed */
-}
-
-.like.liked img {
-  filter: grayscale(0%);
-}
-
-.posts-page {
-  padding: 20px;
+.card-body p span:hover {
+  text-decoration: underline;
 }
