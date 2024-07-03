@@ -3,9 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Profile</title>
 </head>
 <body>
-    <h1>profile</h1>
+    <h1>Profile</h1>
+    <nav>
+        <ul> <!-- These will be icon links -->
+            <li><a href="/feed">Home</a></li>
+            <li>Notifications</li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/post">Create</a></li>
+        </ul>
+    </nav>
+    <div>
+    <img src="{{ user.avatar }}" alt="avatar">
+    <p>Username: {{ user.username }}</p> 
+    <button>Edit profile</button>
+    <div class="profile_info">
+        <p>{{ user.posts }} posts</p>
+        <p>{{ follower_count}} followers</p>
+        <p>{{ following_count }} following</p>
+    </div>
+    <div class="bio">
+        <p>{{ user.name }}</p>
+        <p>{{ user.bio }}</p>
+    </div>
+
+    
+    </div>
+    <div class="posts">
+        {% for post in posts %}
+    <img src="{{ post.image_url }}" alt="post">
+    <div class="post_info">
+        <h3>{{user.username}}</h3>
+        <p class="likes"></p>
+        
+    </div>
+    <p class="caption">{{ post.caption }}</p>
+    <button>delete</button>
+{% endfor %}
+
+    </div>
 </body>
 </html>

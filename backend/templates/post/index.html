@@ -6,18 +6,20 @@
     <title>Create Post</title>
 </head>
 <body>
-    <h1>Create Form</h1>
-    <form action="" method="">
-        <label for="post-image"> Image URL:
-            <input type="text">
+    <h1>Create Post</h1>
+    <form action="/post/" method="POST">
+        <label for="image-url"> Image:
+            <input type="text" id="image_url" name="image_url" required>
         </label>
         <br>
         <br>
         <label for="post-caption">Post Caption:
-            <textarea name="post-caption" id="post-caption" rows="4" cols="50"></textarea>
+            <textarea name="post_caption" id="post_caption" rows="4" cols="50"></textarea>
         </label>
 
         <input type="submit" value="Share">
     </form>
 </body>
 </html>
+
+

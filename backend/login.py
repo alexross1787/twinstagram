@@ -20,9 +20,10 @@ def login():
         user = db.accounts.find_one({"username": username})
 
         if user and check_password_hash(user['password'], password):
-            session['user_id'] = str(user['id'])
+            session['user_id'] = str(user['_id'])
             session['username'] = username
             flash('Login successful!', 'success')
+            return redirect('/feed')
         else:
             flash('Invalid username or password', 'error')
             return redirect('/login')

@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, redirect
 from pymongo import MongoClient
 
 
@@ -16,7 +16,7 @@ def create_app():
 
     @app.route('/')
     def index():
-        return "This is the index"
+        return redirect('/feed')
     
     
     @app.route('/debug')
@@ -34,13 +34,18 @@ def create_app():
     from . import feed
     app.register_blueprint(feed.bp)
 
-    from . import create 
-    app.register_blueprint(create.bp)
+    from . import post 
+    app.register_blueprint(post.bp)
 
     from . import signup
     app.register_blueprint(signup.bp)
 
     from . import login
     app.register_blueprint(login.bp)
+
+    from . import logout
+    app.register_blueprint(logout.bp)
+
+    
     
     return app
