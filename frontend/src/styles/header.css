@@ -58,3 +58,7 @@
 .navigation .active {
   font-weight: bold;
 }
+
+.btn-link {
+  cursor: pointer; /* Add cursor pointer to btn-link class */
+}

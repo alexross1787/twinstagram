@@ -31,11 +31,12 @@
 }
 
 .card-header img {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  object-fit: cover;
+  width: 45px !important;
+  height: 45px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
 }
+
 
 .card-header .ml-3 {
   margin-left: 10px;

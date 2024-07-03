@@ -1,5 +1,6 @@
-// App.js
-import React from 'react';
+// src/App.js
+
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -9,7 +10,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import Login from './components/login';
 import SignUp from './components/signUp';
-import NewPost from './pages/newPost';
+import NewPostModal from './components/newPostModal';
 import Feed from './components/feed';
 import Profile from './pages/profile';
 import Messages from './pages/messages';
@@ -21,20 +22,39 @@ import './icons';
 library.add(faHeart, faComment, faShare);
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  // Simulate authentication state
+  const isAuthenticated = () => {
+    return !!localStorage.getItem('token'); // Adjust based on your auth logic
+  };
+
   return (
     <Router>
       <div className="App">
-        <Header />
+        <Header openModal={openModal} />
         <div className="main-content">
           <Routes>
-            <Route path="/" element={<Feed />} />
-            <Route path="/home" element={<Feed />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/newpost" element={<NewPost />} />
+            {/* Public routes */}
+            <Route path="/" element={<Feed />} />
+            <Route path="/home" element={<Feed />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/messages" element={<Messages />} />
-            <Route path="/settings" element={<Settings />} />
+            {/* Protected routes */}
+            {isAuthenticated() ? (
+              <>
+                <Route path="/messages" element={<Messages />} />
+                <Route path="/settings" element={<Settings />} />
+                <Route path="/newpost" element={<NewPostModal onClose={closeModal} />} />
+              </>
+            ) : (
+              // Redirect to login if not authenticated
+              <Route path="*" element={<Login />} />
+            )}
           </Routes>
         </div>
         <Footer />

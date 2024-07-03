@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/login.css'; // Import your CSS file
+import '../styles/login.css';
 import logoDark from '../assets/logo_dark.png';
 import logoLight from '../assets/logo_light.png';
 
@@ -15,9 +15,9 @@ const Login = () => {
       const response = await fetch('http://backend-url/login', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password }),
       });
       if (response.ok) {
         const data = await response.json();
@@ -36,7 +36,7 @@ const Login = () => {
   // Function to toggle theme
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
-    document.body.classList.toggle('dark-theme'); // Toggle class on body
+    document.body.classList.toggle('dark-theme');
   };
 
   return (
