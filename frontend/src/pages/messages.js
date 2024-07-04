@@ -17,7 +17,7 @@ const Messages = () => {
                 </ul>
               ) : (
                 <ul className="list-group list-group-flush">
-                  {/* Replace with logic to display actual recent conversations */}
+                  {}
                   <li className="list-group-item">Conversation 1</li>
                   <li className="list-group-item">Conversation 2</li>
                   <li className="list-group-item">Conversation 3</li>

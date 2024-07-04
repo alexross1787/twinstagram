@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import "../styles/posts.css"; // Import your CSS file
-import postsData from "../mockData"; // Import your mock data
-import sunsetImage from "../assets/sunset-lukas-rodriguez.jpg"; // Import the sunset image
-import beachImage from "../assets/beach-valeriiamiller.jpg"; // Import the beach image
-
+import "../styles/posts.css"; 
+import postsData from "../mockData"; 
+import sunsetImage from "../assets/sunset-lukas-rodriguez.jpg"; 
+import beachImage from "../assets/beach-valeriiamiller.jpg"; 
 const Posts = () => {
   const [posts, setPosts] = useState(postsData);
   const [comments, setComments] = useState({});

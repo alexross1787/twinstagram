@@ -22,7 +22,7 @@ const SignUp = () => {
         body: JSON.stringify({ username, email, password }),
       });
       if (response.ok) {
-        // Assuming the backend returns a token upon successful sign-up
+        // for backend returns a token upon successful sign-up
         const data = await response.json();
         localStorage.setItem('token', data.token);
         navigate('/home');
