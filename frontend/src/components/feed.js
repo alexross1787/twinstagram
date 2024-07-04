@@ -28,7 +28,7 @@ const Feed = () => {
           caption: "This is a sample caption for post 2",
         },
       ];
-      setPosts(data); // Update posts state with fetched data
+      setPosts(data); 
     };
 
     fetchPosts();
