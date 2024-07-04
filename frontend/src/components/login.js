@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/login.css';
-import logoDark from '../assets/logo_dark.png';
-import logoLight from '../assets/logo_light.png';
+import logoDark from "../assets/logo_dark.png"; 
+import logoLight from "../assets/logo_light.png"; 
+
 
 const Login = () => {
   const [email, setEmail] = useState('');

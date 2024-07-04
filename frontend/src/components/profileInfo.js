@@ -11,20 +11,22 @@ const ProfileInfo = () => {
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
+        console.log('Fetching profile data...');
         const response = await fetch('http://127.0.0.1:5000/profile/');
         if (!response.ok) {
           throw new Error('Failed to fetch profile data');
         }
         const data = await response.json();
+        console.log('Profile data:', data);
         setUser(data.user);
         setPosts(data.posts);
         setFollowerCount(data.follower_count);
         setFollowingCount(data.following_count);
       } catch (error) {
+        console.error('Error fetching profile data:', error);
         setError(error.message);
       }
     };
-
     fetchProfileData();
   }, []);
 
@@ -45,9 +47,15 @@ const ProfileInfo = () => {
         <h2>{user.username}</h2>
         <button className="edit-profile-btn">Edit Profile</button>
         <ul className="stats">
-          <li><strong>{posts.length}</strong> posts</li>
-          <li><strong>{followerCount}</strong> followers</li>
-          <li><strong>{followingCount}</strong> following</li>
+          <li>
+            <strong>{posts.length}</strong> posts
+          </li>
+          <li>
+            <strong>{followerCount}</strong> followers
+          </li>
+          <li>
+            <strong>{followingCount}</strong> following
+          </li>
         </ul>
         <p>{user.bio}</p>
       </div>
